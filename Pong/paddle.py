@@ -13,8 +13,6 @@ class Paddle(Turtle):
         self.resizemode("user")
         self.shapesize(0.5, 5)
         self.goto(x_cor, y_cor)
-        self.speed("fastest")
-
 
     def move_up(self):
         self.forward(MOVE_DISTANCE)

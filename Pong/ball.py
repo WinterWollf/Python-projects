@@ -1,7 +1,7 @@
 from turtle import Turtle
 import random
 
-HEADING = random.randint(0, 359)
+HEADING = random.randint(0,359)
 
 
 class Ball(Turtle):
@@ -13,37 +13,36 @@ class Ball(Turtle):
         self.resizemode("user")
         self.shapesize(0.7, 0.7)
         self.goto(0, 0)
-        self.speed("fastest")
         self.setheading(HEADING)
         self.width = width
         self.height = height
+        self.x_move = 3
+        self.y_move = 3
+        self.move_speed = 0.1
 
     def detect_lower_and_upper_walls_collision(self):
         if self.ycor() <= -self.height / 2 + 10 or self.ycor() >= self.height / 2 - 10:
-            self.bounce()
+            self.bounce_y()
 
     def detect_paddle_colliosion(self, l_paddle, r_paddle):
         if (self.distance(l_paddle) <= 50 or self.distance(r_paddle) <= 50) and (self.xcor() >= self.width / 2 - 38 or self.xcor() <= -self.width / 2 + 30):
-            # TODO 1. Zrobić logikę jak przy bounce tylko, ze innna
-
-    def bounce(self):
-        if self.xcor() > 0:
-            if self.ycor() > 0:
-                self.setheading(HEADING - 90)
-            else:
-                self.setheading(HEADING + 90)
-        elif self.xcor() < 0:
-            if self.ycor() > 0:
-                self.setheading(HEADING + 90)
-            else:
-                self.setheading(HEADING - 90)
+            self.bounce_x()
 
     def detect_wall_collision(self):
         if self.xcor() <= -self.width / 2 or self.xcor() >= self.width / 2 - 5:
             return True
 
     def move(self, l_paddle, r_paddle):
-        self.forward(10)
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
+        self.goto(new_x, new_y)
         self.detect_lower_and_upper_walls_collision()
         self.detect_paddle_colliosion(l_paddle, r_paddle)
         return self.detect_wall_collision()
+
+    def bounce_y(self):
+        self.y_move *= -1
+
+    def bounce_x(self):
+        self.x_move *= -1
+        self.move_speed *= 0.9

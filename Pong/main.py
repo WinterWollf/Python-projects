@@ -31,6 +31,7 @@ screen.onkey(key="Down", fun=right_paddle.move_down)
 while not Game_is_ON:
     screen.update()
     time.sleep(0.1)
+
     Game_is_ON = ball.move(left_paddle, right_paddle)
 
 
