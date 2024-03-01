@@ -30,7 +30,7 @@ class Snake:
     def grow(self):
         part = Turtle(shape="square")
         part.penup()
-        part.color("white")
+        part.color("gray")
         part.goto(x=self.segments[-1].xcor(), y=self.segments[-1].ycor())
         self.segments.append(part)
 
