@@ -20,6 +20,8 @@ screen.onkey(key="w", fun=player.move)
 game_is_on = True
 helper = 0
 
+time.sleep(3)
+
 while game_is_on:
     time.sleep(0.1)
 

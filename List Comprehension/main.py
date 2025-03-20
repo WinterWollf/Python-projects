@@ -4,6 +4,3 @@ with (open("file1.txt", mode='r') as file1):
         date2 = file2.read()
 
         print(date2)
-
-# Write your code above 👆
-# print(result)

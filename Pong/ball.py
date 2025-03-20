@@ -1,7 +1,7 @@
 from turtle import Turtle
 import random
 
-HEADING = random.randint(0,359)
+HEADING = random.uniform(0,359)
 
 
 class Ball(Turtle):
@@ -16,8 +16,8 @@ class Ball(Turtle):
         self.setheading(HEADING)
         self.width = width
         self.height = height
-        self.x_move = 3
-        self.y_move = 3
+        self.x_move = 10
+        self.y_move = 10
         self.move_speed = 0.1
 
     def detect_lower_and_upper_walls_collision(self):
